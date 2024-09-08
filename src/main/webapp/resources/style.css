@@ -1,0 +1,144 @@
+.button {
+    display: inline-block;
+    padding: 10px 20px;
+    background-color: #3498db;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+}
+.button:hover {
+    background-color: #2980b9;
+}
+.header {
+    text-align: center;
+    padding: 20px;
+    background-color: #f2f2f2;
+    font-size: 24px;
+}
+.center-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+.label {
+    font-size: 18px;
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+.message-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 70px;
+    width: 250px;
+    margin: 0 auto;
+    border: 1px solid #ccc;
+    padding: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+.message {
+    padding: 10px;
+    margin: 5px;
+    border-radius: 5px;
+}
+.custom-textarea {
+    width: 300px;
+    height: 150px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+}
+.custom-input {
+    width: 300px;
+    height: 40px;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 16px;
+}
+.profile-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    text-align: center;
+}
+.error {
+    color: red;
+}
+/* Profile Image */
+.profile-image {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 20px;
+    border: 2px solid #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    align-content: center;
+}
+/* Profile Name */
+.profile-name {
+    font-size: 24px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+/* Profile Email */
+.profile-email {
+    font-size: 16px;
+    color: #555;
+    margin-bottom: 10px;
+}
+/* Profile Bio */
+.profile-bio {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+.profile-dob {
+    font-size: 16px;
+    color: #777;
+}
+.skills-container {
+    margin-top: 20px;
+    text-align: center;
+}
+.skill-tag {
+    display: inline-block;
+    background-color: #007BFF;
+    color: #fff;
+    font-size: 14px;
+    padding: 5px 10px;
+    margin: 5px;
+    border-radius: 20px;
+}
+.skill-tag:hover {
+    background-color: #0056b3;
+    cursor: pointer;
+}
+input[type="text"] {
+    width: 200px;
+    padding: 8px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    font-size: 16px;
+}
+/*body {*/
+/*    background-color: #e6f7ff;*/
+/*    margin: 0;*/
+/*    padding: 0;*/
+/*    font-family: Arial, sans-serif;*/
+/*}*/
+input[type="text"]:focus {
+    border-color: #007bff;
+    box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
+}
+br {
+    margin-top: 10px;
+}
