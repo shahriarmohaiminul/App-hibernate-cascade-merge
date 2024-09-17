@@ -90,7 +90,7 @@ public class LibraryController {
 
     @GetMapping("/update/{id}")
     public String update(@PathVariable int id, ModelMap model) {
-        Library library = libraryService.findById(id);
+        Library library = libraryService.getLibraryWithBookAndAuthor(id);
 
         model.put("library", library);
 
