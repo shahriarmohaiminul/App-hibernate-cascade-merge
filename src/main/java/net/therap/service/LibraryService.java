@@ -3,6 +3,7 @@ package net.therap.service;
 import net.therap.entity.Author;
 import net.therap.entity.Book;
 import net.therap.entity.Library;
+import org.hibernate.Hibernate;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -35,6 +36,18 @@ public class LibraryService {
         return library;
     }
 
+    public Library getLibraryWithBookAndAuthor(int id) {
+
+        Library library = findById(id);
+
+        library.getBooks().forEach(
+                book -> Hibernate.initialize(book.getAuthors())
+        );
+
+        return library;
+    }
+
+
     public Library findById(int id) {
 
         return entityManager.find(Library.class, id);
@@ -56,12 +69,10 @@ public class LibraryService {
 
     private Library prepareForUpdate(Library library) {
 
-        //Following changes in the Library object get stored in database
         library.setUpdated(new Date());
         library.setUpdatedBy("admin");
         library.increaseUpdateCount();
 
-        //Following changes in the Book objects get stored in database
         for (Book book : getBooks(library)) {
             book.setUpdated(new Date());
             book.setUpdatedBy("book admin");
@@ -69,9 +80,7 @@ public class LibraryService {
         }
 
         for (Book book : getBooks(library)) {
-            book = bookService.findById(book.getId());
 
-            //Following changes in the Author objects get missing in database randomly
             for (Author author : getAuthors(book)) {
                 author.setUpdatedBy("author admin");
                 author.setUpdated(new Date());
@@ -102,6 +111,5 @@ public class LibraryService {
 
         return authors;
     }
-
 }
 
