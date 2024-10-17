@@ -24,7 +24,7 @@ public class Library extends Persistence {
     @Version
     private int version;
 
-    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
     @JoinColumn(name = "book_id")
     private Book book;
 
