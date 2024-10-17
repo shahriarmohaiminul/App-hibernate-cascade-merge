@@ -38,47 +38,14 @@ public class LibraryController {
     @GetMapping("/create")
     public String create(RedirectAttributes redirectAttributes) {
 
-        Author author1 = new Author();
-        Author author2 = new Author();
+        Book book = new Book();
 
-        Author author3 = new Author();
-        Author author4 = new Author();
-
-        author1.setName("John Doe");
-        author2.setName("James Brown");
-
-
-        author3.setName("Sam");
-        author4.setName("Harry Potter");
-
-        author1.setUpdated(new Date());
-        author2.setUpdated(new Date());
-        author3.setUpdated(new Date());
-        author4.setUpdated(new Date());
-
-        Book book1 = new Book();
-        Book book2 = new Book();
-
-        book1.setTitle("The Book 1");
-        book2.setTitle("The Book 2");
-
-        book1.getAuthors().add(author1);
-        book1.getAuthors().add(author2);
-
-        book2.getAuthors().add(author3);
-        book2.getAuthors().add(author4);
-
-        book1.setUpdated(new Date());
-        book2.setUpdated(new Date());
+        book.setTitle("The Book 1");
 
         Library library = new Library();
 
         library.setName("name1");
-
-        library.getBooks().add(book1);
-
-        library.getBooks().add(book2);
-
+        library.setBook(book);
         library.setUpdated(new Date());
 
         library = libraryService.save(library);

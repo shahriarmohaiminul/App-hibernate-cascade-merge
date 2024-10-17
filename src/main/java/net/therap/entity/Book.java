@@ -19,10 +19,6 @@ public class Book {
 
     private String title;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "book_id")
-    private List<Author> authors;
-
     private int updateCount;
 
     private Date updated;
@@ -31,10 +27,6 @@ public class Book {
 
     @Version
     private int version;
-
-    public Book() {
-        authors = new ArrayList<>();
-    }
 
     public int getId() {
         return id;
@@ -50,14 +42,6 @@ public class Book {
 
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public List<Author> getAuthors() {
-        return authors;
-    }
-
-    public void setAuthors(List<Author> authors) {
-        this.authors = authors;
     }
 
     public int getUpdateCount() {

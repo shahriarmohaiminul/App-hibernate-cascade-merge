@@ -24,17 +24,13 @@ public class Library extends Persistence {
     @Version
     private int version;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    @JoinColumn(name = "library_id")
-    private List<Book> books;
+    @OneToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "book_id")
+    private Book book;
 
     private Date updated;
 
     private String updatedBy;
-
-    public Library() {
-        books = new ArrayList<>();
-    }
 
     public int getId() {
         return id;
@@ -68,12 +64,12 @@ public class Library extends Persistence {
         this.version = version;
     }
 
-    public List<Book> getBooks() {
-        return books;
+    public Book getBook() {
+        return book;
     }
 
-    public void setBooks(List<Book> books) {
-        this.books = books;
+    public void setBook(Book book) {
+        this.book = book;
     }
 
     public Date getUpdated() {
@@ -98,12 +94,8 @@ public class Library extends Persistence {
 
     public String isIssueExists() {
 
-        for (Book book : this.getBooks()) {
-            for (Author author : book.getAuthors()) {
-                if (book.getUpdateCount() != author.getUpdateCount()) {
-                    return "YES";
-                }
-            }
+        if(this.getBook().getUpdateCount() != this.updateCount) {
+            return "YES";
         }
 
         return "No";

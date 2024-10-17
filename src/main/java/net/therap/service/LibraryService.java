@@ -61,46 +61,15 @@ public class LibraryService {
         library.setUpdatedBy("admin");
         library.increaseUpdateCount();
 
-        //Following changes in the Book objects get stored in database
-        for (Book book : getBooks(library)) {
-            book.setUpdated(new Date());
-            book.setUpdatedBy("book admin");
-            book.increaseUpdateCount();
-        }
+        Book book = library.getBook();
 
-        for (Book book : getBooks(library)) {
-            book = bookService.findById(book.getId());
+        book = bookService.findById(book.getId());
 
-            //Following changes in the Author objects get missing in database randomly
-            for (Author author : getAuthors(book)) {
-                author.setUpdatedBy("author admin");
-                author.setUpdated(new Date());
-                author.increaseUpdateCount();
-            }
-        }
+        book.setUpdated(new Date());
+        book.setUpdatedBy("book admin");
+        book.increaseUpdateCount();
 
         return library;
-    }
-
-
-    private List<Book> getBooks(Library library) {
-        List<Book> books = new ArrayList<>();
-
-        for (Book book : library.getBooks()) {
-            books.add(book);
-        }
-
-        return books;
-    }
-
-    private List<Author> getAuthors(Book book) {
-        List<Author> authors = new ArrayList<>();
-
-        for (Author author : book.getAuthors()) {
-            authors.add(author);
-        }
-
-        return authors;
     }
 
 }

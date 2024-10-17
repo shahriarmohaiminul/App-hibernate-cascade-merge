@@ -74,6 +74,7 @@
             font-size: 16px;
             color: #333;
         }
+
         table {
             width: 80%;
             border-collapse: collapse;
@@ -118,26 +119,6 @@
                 <span class="label">Update Count:</span>
                 <span class="field-value"><c:out value="${library.updateCount}"/></span>
             </p>
-
-            <table>
-                <thead>
-                <tr>
-                    <th>ID</th>
-                    <th>Title</th>
-                    <th>Update Count</th>
-                </tr>
-                </thead>
-                <tbody>
-
-                <c:forEach var="book" items="${library.books}">
-                    <tr>
-                        <td><c:out value="${book.id}" /></td>
-                        <td><c:out value="${book.title}" /></td>
-                        <td><c:out value="${book.updateCount}" /></td>
-                    </tr>
-                </c:forEach>
-                </tbody>
-            </table>
 
             <div class="align-right">
                 <button name="_action_update" type="submit" class="button">Update</button>
