@@ -14,6 +14,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static net.therap.util.Util.COMIC;
+
 /**
  * @author shahriarmohaiminul
  * @since 9/7/24
@@ -71,6 +73,9 @@ public class LibraryService {
         for (Book book : getBooks(library)) {
             book = bookService.findById(book.getId());
 
+            book.getGenres().remove(2);
+            book.getGenres().add(COMIC);
+
             //Following changes in the Author objects get missing in database randomly
             for (Author author : getAuthors(book)) {
                 author.setUpdatedBy("author admin");
@@ -81,7 +86,6 @@ public class LibraryService {
 
         return library;
     }
-
 
     private List<Book> getBooks(Library library) {
         List<Book> books = new ArrayList<>();

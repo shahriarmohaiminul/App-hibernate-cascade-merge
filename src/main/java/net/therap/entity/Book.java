@@ -29,11 +29,17 @@ public class Book {
 
     private String updatedBy;
 
+    @ElementCollection
+    @JoinTable(name = "book_genre", joinColumns = {@JoinColumn(name = "book_id")})
+    @Column(name = "genre")
+    private List<String> genres;
+
     @Version
     private int version;
 
     public Book() {
         authors = new ArrayList<>();
+        genres = new ArrayList<>();
     }
 
     public int getId() {
@@ -94,5 +100,18 @@ public class Book {
 
     public void setVersion(int version) {
         this.version = version;
+    }
+
+    public List<String> getGenres() {
+        return genres;
+    }
+
+    public void setGenres(List<String> genres) {
+        this.genres = genres;
+    }
+
+    public boolean isNew() {
+
+        return id == 0;
     }
 }

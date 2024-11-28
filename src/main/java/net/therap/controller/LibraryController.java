@@ -13,6 +13,8 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import java.util.Date;
 
+import static net.therap.util.Util.*;
+
 /**
  * @author shahriarmohaiminul
  * @since 9/7/24
@@ -65,8 +67,16 @@ public class LibraryController {
         book1.getAuthors().add(author1);
         book1.getAuthors().add(author2);
 
+        book1.getGenres().add(ACTION);
+        book1.getGenres().add(FICTION);
+        book1.getGenres().add(HORROR);
+
         book2.getAuthors().add(author3);
         book2.getAuthors().add(author4);
+
+        book2.getGenres().add(ACTION);
+        book2.getGenres().add(FICTION);
+        book2.getGenres().add(HORROR);
 
         book1.setUpdated(new Date());
         book2.setUpdated(new Date());
@@ -80,6 +90,7 @@ public class LibraryController {
         library.getBooks().add(book2);
 
         library.setUpdated(new Date());
+
 
         library = libraryService.save(library);
 

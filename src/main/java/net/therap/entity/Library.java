@@ -5,6 +5,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
+import static net.therap.util.Util.*;
+
 /**
  * @author shahriarmohaiminul
  * @since 9/7/24
@@ -100,12 +102,24 @@ public class Library extends Persistence {
 
         for (Book book : this.getBooks()) {
             for (Author author : book.getAuthors()) {
-                if (book.getUpdateCount() != author.getUpdateCount()) {
+                if (book.getUpdateCount() > 0 && (book.getUpdateCount() != author.getUpdateCount() || !isGenresUpdated(book))) {
                     return "YES";
                 }
             }
         }
 
         return "No";
+    }
+
+    private boolean isGenresUpdated(Book book) {
+        if (book.getGenres().size() != 3) {
+            return false;
+        }
+
+        if (book.getGenres().contains(ACTION) && book.getGenres().contains(FICTION) && book.getGenres().contains(COMIC)) {
+            return true;
+        }
+
+        return false;
     }
 }
